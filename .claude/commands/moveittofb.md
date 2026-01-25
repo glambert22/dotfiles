@@ -4,5 +4,5 @@ Ok. We need to make some changes to the deployment configuration. These changes 
 - Make sure the lambda function name is `{repository-name}-{environment}`
 - The cognito user pool name on the api gateway authorizer should be us-west-2_Sg0RnpexL (sr-auth-sandbox-sr-user-pool)
 - All resources should be created in the `us-west-2` region
-- Move the DNS zone to `sb.fullbay.com`
+- Move the DNS zone to `sb.ssm.com`
   You have access to the aws cli to check the current configuration of the resources. Follow the terraform rules in your memory. All your terraform should format, lint (and conform to tflint-ruleset-aws), and validate. This is building into a dev environment. Ultrathink, and let me know what questions you have.

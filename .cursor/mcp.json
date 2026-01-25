@@ -12,6 +12,28 @@
         "AWS_DEFAULT_REGION": "us-west-2"
       }
     },
+    "diagnoser": {
+      "command": "docker",
+      "args": [
+        "run", "-i", "--rm",
+        "-v", "/Users/glambert/dev/forks/sps/operations-monitoring/diagnoser/diagnoser/configuration/config.ini:/app/diagnoser/configuration/config.ini:ro",
+        "-e", "DOCKER_CONTAINER=1",
+        "diagnoser-mcp:latest"
+      ]
+    },
+    "aws-core": {
+      "command": "uvx",
+      "args": [
+        "awslabs.core-mcp-server@latest",
+        "AWS_REGION=us-west-2"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "autoApprove": [],
+      "disabled": true,
+      "args": []
+    },
     "aws-cfn-mcp": {
       "command": "uvx",
       "args": [
@@ -51,6 +73,21 @@
         "awslabs.aws-diagram-mcp-server@latest"
       ],
       "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "awslabs.eks-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.eks-mcp-server@latest",
+        "--allow-write",
+        "--allow-sensitive-data-access"
+      ],
+      "env": {
+        "AWS_REGION": "us-west-2",
+        "AWS_DEFAULT_REGION": "us-west-2",
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "disabled": false,
